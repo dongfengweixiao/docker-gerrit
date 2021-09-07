@@ -3,7 +3,8 @@ MAINTAINER Gerrit Code Review Community
 
 # Add Gerrit packages repository
 RUN apt-get update && \
-    apt-get -y install gnupg2
+    apt-get -y install gnupg2 && \
+    groupadd -g 1001 gerrit && useradd -g 1001 gerrit
 RUN echo "deb mirror://mirrorlist.gerritforge.com/bionic gerrit contrib" > /etc/apt/sources.list.d/GerritForge.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 847005AE619067D5
 
